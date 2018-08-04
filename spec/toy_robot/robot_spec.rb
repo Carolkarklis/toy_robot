@@ -51,4 +51,64 @@ RSpec.describe ToyRobot::Robot do
       expect(robot.report).to eq "0,0,SOUTH"
     end
   end
+
+  describe "#left" do
+    it 'places in west when facing north' do
+      robot.place 0, 0, :north
+      robot.left
+
+      expect(robot.report).to eq "0,0,WEST"
+    end
+
+    it 'places in south when facing west' do
+      robot.place 0, 0, :west
+      robot.left
+
+      expect(robot.report).to eq "0,0,SOUTH"
+    end
+
+    it 'places in east when facing south' do
+      robot.place 0, 0, :south
+      robot.left
+
+      expect(robot.report).to eq "0,0,EAST"
+    end
+
+    it 'places in north when facing east' do
+      robot.place 0, 0, :east
+      robot.left
+
+      expect(robot.report).to eq "0,0,NORTH"
+    end
+  end
+
+  describe "#right" do
+    it 'places in east when facing north' do
+      robot.place 0, 0, :north
+      robot.right
+
+      expect(robot.report).to eq "0,0,EAST"
+    end
+
+    it 'places in north when facing west' do
+      robot.place 0, 0, :west
+      robot.right
+
+      expect(robot.report).to eq "0,0,NORTH"
+    end
+
+    it 'places in west when facing south' do
+      robot.place 0, 0, :south
+      robot.right
+
+      expect(robot.report).to eq "0,0,WEST"
+    end
+
+    it 'places in south when facing east' do
+      robot.place 0, 0, :east
+      robot.right
+
+      expect(robot.report).to eq "0,0,SOUTH"
+    end
+  end
 end

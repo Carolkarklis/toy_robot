@@ -15,10 +15,30 @@ module ToyRobot
 
     def left
       raise NeedToBeInPlace.new unless @placed
+      case @facing
+      when :north
+        @facing = :west
+      when :west
+        @facing = :south
+      when :south
+        @facing = :east
+      when :east
+        @facing = :north
+      end
     end
 
     def right
       raise NeedToBeInPlace.new unless @placed
+      case @facing
+      when :north
+        @facing = :east
+      when :west
+        @facing = :north
+      when :south
+        @facing = :west
+      when :east
+        @facing = :south
+      end
     end
 
     def move
