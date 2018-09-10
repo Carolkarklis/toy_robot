@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "toy_robot"
 require "toy_robot/robot"
-require "toy_robot/direction"
+require "toy_robot/directions"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

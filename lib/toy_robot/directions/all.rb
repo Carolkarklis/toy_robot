@@ -1,22 +1,16 @@
+require "singleton"
+
 module ToyRobot
-  module Direction
-
-    def self.[](direction_name)
-      @direction = {
-        north: North.new,
-        west: West.new,
-        east: East.new,
-        south: South.new
-      }[direction_name]
-    end
-
+  module Directions
     class North
+      include Singleton
+
       def left
-        West.new
+        West.instance
       end
 
       def right
-        East.new
+        East.instance
       end
 
       def to_s
@@ -29,12 +23,13 @@ module ToyRobot
     end
 
     class West
+      include Singleton
       def left
-        South.new
+        South.instance
       end
 
       def right
-        North.new
+        North.instance
       end
 
       def to_s
@@ -47,12 +42,14 @@ module ToyRobot
     end
 
     class East
+      include Singleton
+
       def left
-        North.new
+        North.instance
       end
 
       def right
-        South.new
+        South.instance
       end
 
       def to_s
@@ -65,12 +62,14 @@ module ToyRobot
     end
 
     class South
+      include Singleton
+
       def left
-        East.new
+        East.instance
       end
 
       def right
-        West.new
+        West.instance
       end
 
       def to_s

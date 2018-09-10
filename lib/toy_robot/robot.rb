@@ -6,7 +6,7 @@ module ToyRobot
     def place(x, y, facing)
       @x = x
       @y = y
-      @facing = ToyRobot::Direction[facing]
+      @facing = ToyRobot::Directions[facing]
       @placed = true
     end
 

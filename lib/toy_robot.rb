@@ -1,6 +1,8 @@
 require "toy_robot/version"
 require "toy_robot/robot"
-require "toy_robot/direction"
+require "toy_robot/directions/all"
+require "toy_robot/directions"
+
 
 module ToyRobot
 end
