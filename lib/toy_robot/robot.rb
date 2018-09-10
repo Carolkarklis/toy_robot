@@ -1,3 +1,4 @@
+require 'byebug'
 module ToyRobot
   class NeedToBeInPlace < StandardError; end
 
@@ -5,7 +6,7 @@ module ToyRobot
     def place(x, y, facing)
       @x = x
       @y = y
-      @facing = facing
+      @facing = ToyRobot::Direction[facing]
       @placed = true
     end
 
@@ -15,44 +16,25 @@ module ToyRobot
 
     def left
       raise NeedToBeInPlace.new unless @placed
-      case @facing
-      when :north
-        @facing = :west
-      when :west
-        @facing = :south
-      when :south
-        @facing = :east
-      when :east
-        @facing = :north
-      end
+      @facing = @facing.left
     end
 
     def right
       raise NeedToBeInPlace.new unless @placed
-      case @facing
-      when :north
-        @facing = :east
-      when :west
-        @facing = :north
-      when :south
-        @facing = :west
-      when :east
-        @facing = :south
-      end
+      @facing = @facing.right
     end
 
     def move
       raise NeedToBeInPlace.new unless @placed
 
-      case @facing
-      when :north
+      if @facing.to_s == "NORTH"
         @y += 1
-      when :east
-        @x += 1
-      when :south
+      elsif @facing.to_s == "SOUTH"
         @y -= 1
-      when :west
+      elsif @facing.to_s == "WEST"
         @x -= 1
+      elsif @facing.to_s == "EAST"
+        @x += 1 
       end
     end
   end
